@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTC Form 1 Auto-Filler</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- PDF बनाने के लिए pdf-lib लाइब्रेरी -->
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>LTC FORM 1 - Auto Filler</h2>
+        <form id="ltcForm">
+            
+            <fieldset>
+                <legend>भाग क - (सरकारी सेवक द्वारा भरा जाना है)</legend>
+                <div class="form-group">
+                    <label>नाम (Name):</label>
+                    <input type="text" id="empName" placeholder="नाम दर्ज करें">
+                </div>
+                <div class="form-group">
+                    <label>पद (Rank):</label>
+                    <input type="text" id="empRank" placeholder="पद दर्ज करें">
+                </div>
+                <div class="form-group">
+                    <label>वेतन (Pay):</label>
+                    <input type="text" id="empPay" placeholder="वेतन दर्ज करें">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>7- यात्राओं का ब्योरा</legend>
+                <table id="journeyTable">
+                    <thead>
+                        <tr>
+                            <th>तारीख और समय (Date & Time)</th>
+                            <th>प्रस्थान (From)</th>
+                            <th>आगमन (To)</th>
+                            <th>दुरी (Distance)</th>
+                            <th>यात्री भाड़े की सं.</th>
+                            <th>संदत्त यात्री भाड़ा (Rs)</th>
+                            <th>एक्शन</th>
+                        </tr>
+                    </thead>
+                    <tbody id="journeyBody">
+                        <!-- यहाँ डायनामिक रो (पंक्तियाँ) जुड़ेंगी -->
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" style="text-align: right;"><b>कुल योग (Grand Total):</b></td>
+                            <td><input type="text" id="grandTotal" readonly></td>
+                            <td><button type="button" class="add-btn" onclick="addRow()">+ जोड़ें</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </fieldset>
+
+            <button type="button" class="submit-btn" onclick="generatePDF()">भरा हुआ PDF डाउनलोड करें</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
